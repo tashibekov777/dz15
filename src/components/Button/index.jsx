@@ -1,9 +1,19 @@
-import "./index.css";
+import './index.css';
 
-function Button(props) {
-  const { variant = "primary", size = "md", children } = props; 
-  const className = `my-button my-button--${variant} my-button--${size}`; 
-  return <button className={className}>{children}</button>;
+
+
+export default function Button(props) {
+    const {
+        children, 
+        size='md', 
+        variant='bordered', 
+        disabled, 
+        type='button',
+        onClick
+    } = props;
+    const classNameButton = disabled ? `button ${variant} ${size} ${type} disabled` : `button ${variant} ${size} ${type}`
+    return <button 
+        onClick={onClick} 
+        className={classNameButton}
+    >{children}</button>
 }
-
-export default Button;
